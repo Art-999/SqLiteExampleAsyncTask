@@ -3,7 +3,9 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/SqLiteExampleAsyncTask.iml" filepath="$PROJECT_DIR$/SqLiteExampleAsyncTask.iml" />
+      <module fileurl="file://H:\Android\Examples2017\SqLiteExampleAsyncTask\SqLiteExampleAsyncTask.iml" filepath="H:\Android\Examples2017\SqLiteExampleAsyncTask\SqLiteExampleAsyncTask.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://H:\Android\Examples2017\SqLiteExampleAsyncTask\app\app.iml" filepath="H:\Android\Examples2017\SqLiteExampleAsyncTask\app\app.iml" />
     </modules>
   </component>
 </project>

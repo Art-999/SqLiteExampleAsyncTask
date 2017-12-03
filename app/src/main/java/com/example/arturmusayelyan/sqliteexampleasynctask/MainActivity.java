@@ -28,7 +28,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(intent);
                 break;
             case R.id.view_products_button:
-
+                intent = new Intent(this, DisplayProduct.class);
+                startActivity(intent);
                 break;
         }
     }
