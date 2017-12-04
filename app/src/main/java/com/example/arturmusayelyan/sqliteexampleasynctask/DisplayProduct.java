@@ -1,7 +1,7 @@
 package com.example.arturmusayelyan.sqliteexampleasynctask;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 
 public class DisplayProduct extends AppCompatActivity {
 
@@ -10,7 +10,8 @@ public class DisplayProduct extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_display_product);
 
-        BackgroundTask backgroundTask = new BackgroundTask(this);
-        backgroundTask.execute("get_info");
+
+            BackgroundTask backgroundTask = new BackgroundTask(this);
+            backgroundTask.execute("get_info");
     }
 }

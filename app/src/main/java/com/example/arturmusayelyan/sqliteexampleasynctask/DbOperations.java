@@ -15,6 +15,10 @@ public class DbOperations extends SQLiteOpenHelper {
     private static final int DB_VERSION = 1;
     private static final String DB_NAME = "product_info.db";
 
+    public static String getDbName() {
+        return DB_NAME;
+    }
+
     private static final String CREATE_QUERY = "create table " + ProductDbBaseInfo.ProductEntry.TABLE_NAME + "(" + ProductDbBaseInfo.ProductEntry.ID + " text," + ProductDbBaseInfo.ProductEntry.NAME + " text," + ProductDbBaseInfo.ProductEntry.QUANTITY + " integer," + ProductDbBaseInfo.ProductEntry.PRICE + " integer);";
 
     public DbOperations(Context context) {
@@ -51,4 +55,11 @@ public class DbOperations extends SQLiteOpenHelper {
         Log.d("Database operations", "cursor retrieved");
         return cursor;
     }
+
+    public void deleteTable() {
+        SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+        sqLiteDatabase.execSQL("delete from " + ProductDbBaseInfo.ProductEntry.TABLE_NAME);
+    }
+
+
 }

@@ -36,5 +36,14 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
         android:text="View products" />
+    <Button
+        android:id="@+id/delete_db_button"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/view_products_button"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:text="delete DB" />
+
 
 </RelativeLayout>

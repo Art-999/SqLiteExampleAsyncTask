@@ -13,14 +13,15 @@ import android.widget.Toast;
  */
 
 public class BackgroundTask extends AsyncTask<String, Product, String> {
-    private Context context;
+    private static final String GET_INFO = "get_info";
+    Context context;
     ProductAdapter productAdapter;
     Activity activity;
     ListView listView;
 
     public BackgroundTask(Context context) {
         this.context = context;
-        activity= (Activity) context;
+        activity = (Activity) context;
     }
 
     @Override
@@ -43,24 +44,26 @@ public class BackgroundTask extends AsyncTask<String, Product, String> {
 
             return "One Row Inserted....";
         } else if (method.equals("get_info")) {
-            listView=activity.findViewById(R.id.list_view_for_display_product);
+            listView = activity.findViewById(R.id.list_view_for_display_product);
             SQLiteDatabase sqLiteDatabase = dbOperations.getReadableDatabase();
             Cursor cursor = dbOperations.getInformations(sqLiteDatabase);
             productAdapter = new ProductAdapter(context, R.layout.display_product_row);
 
             String id, name;
             int quantity, price;
-            while (cursor.moveToNext()) {
+            cursor.moveToFirst();
+            do {
                 id = cursor.getString(cursor.getColumnIndex(ProductDbBaseInfo.ProductEntry.ID));
                 name = cursor.getString(cursor.getColumnIndex(ProductDbBaseInfo.ProductEntry.NAME));
                 quantity = cursor.getInt(cursor.getColumnIndex(ProductDbBaseInfo.ProductEntry.QUANTITY));
                 price = cursor.getInt(cursor.getColumnIndex(ProductDbBaseInfo.ProductEntry.PRICE));
                 Product product = new Product(id, name, quantity, price);
                 publishProgress(product);
-
             }
-            return "get info";
+            while (cursor.moveToNext());
 
+
+            return "get_info";
         }
         return null;
     }
@@ -69,14 +72,14 @@ public class BackgroundTask extends AsyncTask<String, Product, String> {
     protected void onProgressUpdate(Product... values) {
         productAdapter.add(values[0]);
 
+
     }
 
     @Override
     protected void onPostExecute(String result) {
-        if(result.equals("get_info")){
+        if (result.equals("get_info")) {
             listView.setAdapter(productAdapter);
-        }
-        else {
+        } else {
             Toast.makeText(context, result, Toast.LENGTH_LONG).show();
         }
     }
